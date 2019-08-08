@@ -21,7 +21,7 @@ module.exports = {
                 res.json({ code: 404, msg: '查询错误' })
             } else {
                 // console.log(result);
-                res.json({ code: 200, msg: '查询成功', data: result.length })
+                res.json({ code: 200, msg: '查询成功', data: result })
                 //获得发表的总数量
             }
         })

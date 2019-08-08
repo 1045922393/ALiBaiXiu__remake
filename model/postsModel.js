@@ -11,27 +11,29 @@ module.exports = {
         ${obj && obj.categoriy != 0 ? ` and category_id= '${obj.categoriy}'` : ` `} 
         ${obj && obj.status != 'all' ? ` and posts.status='${obj.status}'` : ` `} 
         order by posts.created DESC `;
-
-        // connection.query(sql, function (err, result) {
-        //     if (err) {
-        //         callback;
-        //     } else {
-        //         console.log(result.length)
-        //     }
-
-        // })
-        if (obj) {
-            sql += ` limit ${(obj.pageNum - 1) * obj.pageSize},${obj.pageSize}`;
-            // console.log(sql)
-        }
+        let allLength = 0;
         connection.query(sql, function (err, result) {
             if (err) {
                 callback;
             } else {
-                callback(err, result)
+                // console.log(result.length)
+                allLength = result.length;
+                if (obj) {
+                    sql += ` limit ${(obj.pageNum - 1) * obj.pageSize},${obj.pageSize}`;
+                    // console.log(sql)
+                }
+                connection.query(sql, function (err, result) {
+                    if (err) {
+                        callback(err);
+                    } else {
+                        callback(null, { arr: result, allLength: allLength })
+                    }
+
+                })
             }
 
         })
+
     },
     getCategories(callback) {
         let sql = `SELECT * FROM \`categories\``;
