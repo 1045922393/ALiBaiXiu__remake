@@ -20,12 +20,14 @@ app.use(session({
 app.use(function (req, res, next) {
     if ((req.session && req.session.isLogin == 'true') || !req.url.startsWith('/admin') || req.url == '/admin/login.html') {
         next()
-    } else {
-        res.writeHead(301, {
-            'Location': '/admin/login.html'
-        })
-        res.end()
-        // res.redirect('/admin/login.html')
+    }
+    else {
+        // 301 是永久重定向 302 临时重定向
+        // res.writeHead(301, {
+        //     'Location': '/admin/login.html'
+        // })
+        // res.end()
+        res.redirect('/admin/login.html')
     }
 })
 

@@ -28,7 +28,7 @@ $(function () {
                     $('#errorWarming').stop(true, true).slideDown(1000).delay(1000).slideUp(1000)
                 } else {
                     alert(response.msg);
-                    location.href = '/admin/index'
+                    location.href = '/admin/index.html'
                 }
             }
         })
