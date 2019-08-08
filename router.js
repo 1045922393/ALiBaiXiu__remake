@@ -2,6 +2,7 @@
 const router = require('express').Router();
 const getPargeController = require('./controller/getPargeController');
 const adminController = require('./controller/adminController')
+const postsController = require('./controller/postsController')
 router.get('/', getPargeController.getIndex)
     .get('/index.html', getPargeController.getIndex)
     .get('/index', getPargeController.getIndex)
@@ -22,5 +23,5 @@ router.get('/', getPargeController.getIndex)
     .get('/admin/slides.html', getPargeController.getAdminSlides)
     .get('/admin/users.html', getPargeController.getAdminUsers)
     .post('/checkLogin', adminController.checkLogin)
-
+    .get('/getPosts', postsController.getPosts)
 module.exports = router;
