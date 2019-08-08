@@ -25,4 +25,5 @@ router.get('/', getPargeController.getIndex)
     .post('/checkLogin', adminController.checkLogin)
     .get('/getPosts', postsController.getPosts)
     .get('/getAllPosts', postsController.getAllPosts)
+    .get('/getPostsCate', postsController.getPostsCate)
 module.exports = router;

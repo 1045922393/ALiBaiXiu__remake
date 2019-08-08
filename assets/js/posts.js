@@ -54,5 +54,21 @@ $(function () {
             }
         })
     }
+    //获取所有分类的ajax
+    $.ajax({
+        type: 'get',
+        url: '/getPostsCate',
+        dataType: 'json',
+        success: function (response) {
+            console.log(response)
+            let html = `<option value="0">所有分类</option>`;
+            response.data.forEach((val) => {
+                html += `<option id="${val.slug}" value="${val.id}">${val.name}</option>`
+            })
+            $('#categoriy').html(html);
+        }
+    })
+    $('#filter').on('click', function () {
 
+    })
 })

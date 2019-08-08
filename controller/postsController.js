@@ -26,5 +26,14 @@ module.exports = {
             }
         })
 
+    },
+    getPostsCate(req, res) {
+        postsModel.getCategories((err, arr) => {
+            if (err) {
+                res.json({ code: 404, msg: '获得分类失败' })
+            } else {
+                res.json({ code: 200, msg: '获得分类成功', data: arr })
+            }
+        })
     }
 }

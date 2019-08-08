@@ -22,5 +22,15 @@ module.exports = {
             }
 
         })
+    },
+    getCategories(callback) {
+        let sql = `SELECT * FROM \`categories\``;
+        connection.query(sql, (err, result) => {
+            if (err) {
+                callback(err)
+            } else {
+                callback(null, result)
+            }
+        })
     }
 }
