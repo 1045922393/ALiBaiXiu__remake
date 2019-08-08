@@ -7,9 +7,19 @@ module.exports = {
     getPosts(obj, callback) {
         let sql = `select posts.*,users.nickname,categories.name from posts
         INNER JOIN users on posts.user_id = users.id
-        inner join categories on categories.id = posts.category_id
-        order by posts.created DESC`
+        inner join categories on categories.id = posts.category_id where 1=1 
+        ${obj && obj.categoriy != 0 ? ` and category_id= '${obj.categoriy}'` : ` `} 
+        ${obj && obj.status != 'all' ? ` and posts.status='${obj.status}'` : ` `} 
+        order by posts.created DESC `;
 
+        // connection.query(sql, function (err, result) {
+        //     if (err) {
+        //         callback;
+        //     } else {
+        //         console.log(result.length)
+        //     }
+
+        // })
         if (obj) {
             sql += ` limit ${(obj.pageNum - 1) * obj.pageSize},${obj.pageSize}`;
             // console.log(sql)
