@@ -44,5 +44,16 @@ module.exports = {
                 callback(null, result)
             }
         })
+    },
+    addPost(addObj, callback) {
+        let sql = `insert into posts set ?`             //?占位符
+        connection.query(sql, addObj, (err, result) => {    //传入占位符的对象必须实参的数量以及名字一致,如果是自增的字段也需要给其设置null
+            console.log(addObj)
+            if (err) {
+                callback(err)
+            } else {
+                callback(null)
+            }
+        })
     }
 }

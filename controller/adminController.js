@@ -19,6 +19,8 @@ module.exports = {
                     //状态保持
                     req.session.isLogin = 'true'
                     //密码一致,返回验证成功信息
+                    req.session.currentUser = result;
+                    //将此用户保存再session中
                     res.json({ code: 200, msg: '登陆成功' });
                 } else {
                     //密码不一致,返回错误信息

@@ -35,5 +35,22 @@ module.exports = {
                 res.json({ code: 200, msg: '获得分类成功', data: arr })
             }
         })
+    },
+    addPost(req, res) {
+        // console.log(req.body);
+        // console.log(req.session)
+        let addObj = req.body;
+        addObj.views = 0;
+        addObj.likes = 0;
+        addObj.id = null;
+        addObj.user_id = req.session.currentUser.id;
+        // console.log(addObj)
+        postsModel.addPost(addObj, (err) => {
+            if (err) {
+                res.json({ code: 400, msg: '添加错误' })
+            } else {
+                res.json({ code: 200, msg: '添加成功' })
+            }
+        })
     }
 }
