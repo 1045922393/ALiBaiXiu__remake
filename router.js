@@ -4,6 +4,7 @@ const getPargeController = require('./controller/getPargeController');
 const adminController = require('./controller/adminController')
 const postsController = require('./controller/postsController')
 const uploadController = require('./controller/uploadController')
+const categoryController = require('./controller/categoryController')
 router.get('/', getPargeController.getIndex)
     .get('/index.html', getPargeController.getIndex)
     .get('/index', getPargeController.getIndex)
@@ -31,4 +32,5 @@ router.get('/', getPargeController.getIndex)
     .post('/addPost', postsController.addPost)
     .get('/getPostById', postsController.getPostById)
     .get('/delPostById', postsController.delPostById)
+    .get('/submitCate', categoryController.submitCate)
 module.exports = router;

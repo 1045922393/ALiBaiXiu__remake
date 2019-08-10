@@ -5,13 +5,14 @@
     <h1>分类目录</h1>
   </div>
   <!-- 有错误信息时展示 -->
-  <!-- <div class="alert alert-danger">
-        <strong>错误！</strong>发生XXX错误
-      </div> -->
+  <div class="alert alert-danger" hidden>
+    <strong>错误！</strong>发生XXX错误
+  </div>
   <div class="row">
     <div class="col-md-4">
       <form>
-        <h2>添加新分类目录</h2>
+        <input type="hidden" name="id" value="" id="cateid">
+        <h2>编辑分类目录</h2>
         <div class="form-group">
           <label for="name">名称</label>
           <input id="name" class="form-control" name="name" type="text" placeholder="分类名称">
@@ -22,7 +23,9 @@
           <p class="help-block">https://zce.me/category/<strong>slug</strong></p>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary" type="submit">添加</button>
+          <input id="subNew" class="btn btn-primary" type="button" title="生成新分类" value="提交新增">
+          <input id="subEdit" class="btn btn-primary" type="hidden" title="覆盖旧分类" value="提交编辑">
+          <input id="quitEdit" class="btn btn-danger" type="hidden" title="推出编辑" value="退出编辑">
         </div>
       </form>
     </div>
@@ -41,7 +44,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <!-- <tr>
             <td class="text-center"><input type="checkbox"></td>
             <td>未分类</td>
             <td>uncategorized</td>
@@ -67,7 +70,7 @@
               <a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
               <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
             </td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
@@ -76,3 +79,4 @@
 </div>
 <%- include('./common/aside.ejs') %>
 <%- include('./common/footer.ejs') %>
+<script src="/assets/js/categories.js"></script>
