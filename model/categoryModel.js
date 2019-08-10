@@ -19,5 +19,16 @@ module.exports = {
 
             }
         })
+    },
+    delCategory(id, callback) {
+        let sql = `delete from categories where id = '${id}'`
+        connection.query(sql, (err, result) => {
+            if (err) {
+                callback(err)
+            } else {
+                callback(null);
+            }
+        })
     }
+
 }

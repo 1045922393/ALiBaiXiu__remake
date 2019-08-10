@@ -15,7 +15,7 @@ $(function () {
                     <td>${val.slug}</td>
                     <td class="text-center">
                       <a href="javascript:;" class="btn btn-info btn-xs editCate" data-id="${val.id}" data-name="${val.name}" data-slug="${val.slug}">编辑</a>
-                      <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+                      <a href="javascript:;" class="btn btn-danger btn-xs delCate">删除</a>
                     </td>
                   </tr>`
                 })
@@ -55,7 +55,7 @@ $(function () {
             url: '/submitCate',
             dataType: 'json',
             success: function (res) {
-                console.log(res)
+                // console.log(res)
                 if (res.code == 200) {
                     alert(res.msg)
                     //     $('<tr>').html(`
@@ -73,7 +73,7 @@ $(function () {
                     <td>${$('#slug').val()}</td>
                     <td class="text-center">
                       <a href="javascript:;" class="btn btn-info btn-xs editCate" data-id="${res.data.id}" data-name="${$('#name').val()}" data-slug="${$('#slug').val()}">编辑</a>
-                      <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+                      <a href="javascript:;" class="btn btn-danger btn-xs delCate">删除</a>
                     </td>
                   `))
                 } else {
@@ -110,7 +110,7 @@ $(function () {
                     <td>${$('#slug').val()}</td>
                     <td class="text-center">
                       <a href="javascript:;" class="btn btn-info btn-xs editCate" data-id="${res.data.id}" data-name="${$('#name').val()}" data-slug="${$('#slug').val()}">编辑</a>
-                      <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+                      <a href="javascript:;" class="btn btn-danger btn-xs delCate">删除</a>
                     </td>
                   `)
                 } else {
@@ -118,5 +118,27 @@ $(function () {
                 }
             }
         })
+    });
+    $('tbody').on('click', '.delCate', function () {
+        // console.log($(this).siblings('a').data('id'))
+        let thisF = this;
+        if (confirm('确定要删除该分类吗?')) {
+            let delId = $(this).siblings('a').data('id')
+            $.ajax({
+                type: 'get',
+                data: { id: delId },
+                dataType: 'json',
+                url: '/delCategory',
+                success: function (res) {
+                    console.log(res)
+                    if (res.code == 200) {
+                        $(thisF).parents('tr').remove()
+
+                        $('#quitEdit').click()  //归零编辑
+                    }
+                }
+            })
+        }
+
     })
 })

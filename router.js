@@ -33,4 +33,5 @@ router.get('/', getPargeController.getIndex)
     .get('/getPostById', postsController.getPostById)
     .get('/delPostById', postsController.delPostById)
     .get('/submitCate', categoryController.submitCate)
+    .get('/delCategory', categoryController.delCategory)
 module.exports = router;

@@ -16,5 +16,15 @@ module.exports = {
                 res.json({ code: 200, msg: "提交分类成功", data: result })
             }
         })
+    },
+    delCategory(req, res) {
+        let id = req.query.id;
+        categoryModel.delCategory(id, (err, result) => {
+            if (err) {
+                res.json({ code: 400, msg: "删除分类错误" })
+            } else {
+                res.json({ code: 200, msg: "删除分类成功" })
+            }
+        })
     }
 }
