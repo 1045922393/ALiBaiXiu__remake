@@ -78,5 +78,15 @@ module.exports = {
                 callback(null, result[0])
             }
         })
+    },
+    delPostById(id, callback) {
+        let sql = `delete from posts where id = '${id}'`;
+        connection.query(sql, (err) => {
+            if (err) {
+                callback(err)
+            } else {
+                callback(null)
+            }
+        })
     }
 }

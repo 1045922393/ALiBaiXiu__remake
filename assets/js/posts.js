@@ -96,7 +96,26 @@ $(function () {
         }
     })
 
-
+    $('tbody').on('click', '.btn-xs.btn-danger', function (e) {
+        // console.log($(this).data('id'))
+        if (confirm('确定要删除此数据吗?')) {
+            let delId = $(this).data('id');
+            $.ajax({
+                url: '/delPostById?id=' + delId,
+                type: 'get',
+                // data: delId,
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code == 200) {
+                        alert('删除成功');
+                        location.reload()
+                    } else {
+                        alert('服务器异常')
+                    }
+                }
+            })
+        }
+    })
 
 
 })

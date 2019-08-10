@@ -76,5 +76,16 @@ module.exports = {
                 res.json({ code: 200, msg: '获取成功', data: result })
             }
         })
+    },
+    delPostById(req, res) {
+        // console.log(req.query)
+        let id = req.query.id;
+        postsModel.delPostById(id, (err, result) => {
+            if (err) {
+                res.send({ code: 400, msg: '删除错误' })
+            } else {
+                res.send({ code: 200, msg: '删除成功' })
+            }
+        })
     }
 }
