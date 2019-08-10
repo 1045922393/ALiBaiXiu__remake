@@ -15,7 +15,7 @@
         <input id="title" class="form-control input-lg" name="title" type="text" placeholder="文章标题">
       </div>
       <div class="form-group">
-        <label for="content">标题</label>
+        <label for="content">内容</label>
         <textarea id="content" class="form-control input-lg" name="content" cols="30" rows="10"
           placeholder="内容"></textarea>
       </div>
@@ -31,6 +31,7 @@
         <!-- show when image chose -->
         <img class="help-block thumbnail showPic" style="display: none">
         <input type="hidden" name="feature" value="" id='uploadFeature'>
+        <input type="hidden" name="id" value="" id='hiddenId'>
         <input id="feature" class="form-control" name="feature" type="file">
       </div>
       <div class="form-group">
@@ -61,4 +62,6 @@
 <%- include('./common/aside.ejs') %>
 <%- include('./common/footer.ejs') %>
 <script src="/assets/vendors/ckeditor/ckeditor.js"></script>
+<script src="/assets/js/tools.js"></script>
+
 <script src="/assets/js/postAdd.js"></script>

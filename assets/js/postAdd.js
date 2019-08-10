@@ -1,9 +1,49 @@
 $(function () {
-    //动态获取分类
+
     // let time = new Date();
     // console.log(time.toUTCString())
-    $('#created').val('2019-08-09T11:11')
+    $('#created').val('2019-08-09T11:11')   //测试使用,后面需要注释掉
 
+    //判断地址栏是否有id
+    let id = tools.getLocationSearch(location.search).id;
+    // console.log(id)
+    //根据id的存在与否,去获取数据
+    if (id) {
+        //发起ajax
+        $.ajax({
+            url: '/getPostById?id=' + id,
+            type: 'get',
+            dataType: 'json',
+            success: function (response) {
+                // console.log(response);
+                /**category_id: 1
+                content: "<p>gg</p>"
+                created: "2019-08-09 11:11:00"
+                feature: "/uploads/upload_d031aaceea8b7b923ce7bd090b282969.jpg"
+                id: 19
+                likes: 0
+                slug: "gg"
+                status: "drafted"
+                title: "gg"
+                user_id: 5
+                views: 0 */
+                let res = response.data;
+                $('#title').val(res.title)
+                $('#content').val(res.content)
+                $('#slug').val(res.slug)
+                $('#uploadFeature').val(res.feature)
+                $('#category').val(res.category_id)
+                $('#status').val(res.status)
+                // console.log()
+                $('#created').val(res.created)
+                $('#hiddenId').val(res.id)
+                $('.showPic').attr('src', res.feature).show()
+            }
+        })
+    }
+
+
+    //动态获取分类
 
     $.ajax({
         type: 'get',

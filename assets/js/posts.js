@@ -1,4 +1,9 @@
 $(function () {
+
+
+
+
+
     //发送ajax获得数据的数量
     let totalPostsNumber = 0;       //获得说有的数据
     // let pageSize = 2;       //控制每页多少条数据

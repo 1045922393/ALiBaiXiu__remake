@@ -29,4 +29,5 @@ router.get('/', getPargeController.getIndex)
     .get('/getPostsCate', postsController.getPostsCate)
     .post('/uploadsFeature', uploadController.uploadsFeature)
     .post('/addPost', postsController.addPost)
+    .get('/getPostById', postsController.getPostById)
 module.exports = router;

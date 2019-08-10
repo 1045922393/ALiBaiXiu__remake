@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getLocationSearch(str) {
+            let obj = {};
+            let st = str.substring(1);    //id=1&name=2&age=3
+            let temp = st.split('&');       //[id=1,name=2,age=3]
+            temp.forEach((val, index) => {
+                let arr = val.split('=');       //[id,1]
+                obj[arr[0]] = arr[1];
+            })
+            return obj;
+        }
+
+        console.log(getLocationSearch('?id=1&name=2&age=3'))
+    </script>
+</body>
+
+</html>
