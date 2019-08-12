@@ -19,7 +19,7 @@ module.exports = {
             if (err) {
                 callback(err)
             } else {
-                console.log(result)
+                // console.log(result)
                 callback(null, result)
             }
         })

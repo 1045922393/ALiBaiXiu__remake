@@ -10,7 +10,7 @@
       </div> -->
   <div class="page-action">
     <!-- show when multiple checked -->
-    <div class="btn-batch" style="display: none">
+    <div class="btn-batch lotsMark" style="display: none">
       <button class="btn btn-info btn-sm">批量批准</button>
       <button class="btn btn-warning btn-sm">批量拒绝</button>
       <button class="btn btn-danger btn-sm">批量删除</button>
@@ -26,7 +26,7 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-        <th class="text-center" width="40"><input type="checkbox"></th>
+        <th class="text-center" width="40"><input id="chooseAll" type="checkbox"></th>
         <th>作者</th>
         <th>评论</th>
         <th>评论在</th>
@@ -81,7 +81,7 @@
 <script type="text/template" id="commentTemplate">
 {{each $data val}}
 <tr class="{{val.status=='held'?'danger':''}}">
-  <td class="text-center"><input type="checkbox"></td>
+  <td class="text-center"><input type="checkbox" data-id="{{val.id}}"></td>
   <td>{{val.author}}</td>
   <td>{{val.content}}</td>
   <td>{{val.title}}</td>

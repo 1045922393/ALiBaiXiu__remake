@@ -7,6 +7,35 @@ $(function () {
         commentPageNum: 3,   //每一页显示的评论数量
     };
     getPaginationTotalPages(remarkPagination, getCurrentComments)
+
+    //注册全选点击
+    $('#chooseAll').on('click', () => {
+        $('[type="checkbox"]').prop("checked", $('#chooseAll').prop('checked'))
+        if ($('#chooseAll').prop('checked')) {
+            $('.lotsMark').fadeIn(500)
+        } else {
+            $('.lotsMark').fadeOut(500)
+        }
+    })
+
+    //注册监听点击事件
+    $('tbody').on('click', '[type="checkbox"]', () => {
+        //是否全选
+        $('#chooseAll').prop('checked', $('tbody [type="checkbox"]:checked').length == changing.commentPageNum);
+        if ($('tbody [type="checkbox"]:checked').length >= 2) {
+            $('.lotsMark').fadeIn(500)
+        } else {
+            $('.lotsMark').fadeOut(500)
+        }
+    })
+
+
+
+
+
+
+
+
     //该函数只负责分页器的总页数
     function getPaginationTotalPages(callback, callback2) {
         callback = callback || function () { };//如果不传那么进行空回调;
@@ -82,6 +111,9 @@ $(function () {
                 changing.currentNum = page;
                 //当前页加1后调用一次按获得服务器的需要数据
                 getCurrentComments()
+
+                //重置全选按钮
+                $('#chooseAll').prop('checked', false)
             }
         }
         $('#pagination').bootstrapPaginator(options)
